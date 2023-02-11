@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Nutech-Ewallet-App</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_transfer">Transfer</string>
+    <string name="title_profile">Profile</string>
+</resources>
