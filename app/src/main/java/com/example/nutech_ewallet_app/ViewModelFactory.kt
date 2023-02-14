@@ -7,7 +7,11 @@ import com.example.nutech_ewallet_app.data.Injection
 import com.example.nutech_ewallet_app.data.repository.TransactionRepository
 import com.example.nutech_ewallet_app.data.repository.UserRepository
 import com.example.nutech_ewallet_app.ui.home.HomeViewModel
+import com.example.nutech_ewallet_app.ui.login.LoginViewModel
 import com.example.nutech_ewallet_app.ui.profile.ProfileViewModel
+import com.example.nutech_ewallet_app.ui.registration.RegistrationViewModel
+import com.example.nutech_ewallet_app.ui.topup.TopupViewModel
+import com.example.nutech_ewallet_app.ui.transaction.TransactionViewModel
 import com.example.nutech_ewallet_app.ui.transfer.TransferViewModel
 
 class ViewModelFactory private constructor(
@@ -20,6 +24,14 @@ class ViewModelFactory private constructor(
             return HomeViewModel(userRepository, transactionRepository) as T
         } else if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
             return ProfileViewModel(userRepository) as T
+        } else if (modelClass.isAssignableFrom(TransactionViewModel::class.java)) {
+            return TransactionViewModel(transactionRepository) as T
+        } else if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
+            return LoginViewModel(userRepository) as T
+        } else if (modelClass.isAssignableFrom(RegistrationViewModel::class.java)) {
+            return RegistrationViewModel(userRepository) as T
+        } else if (modelClass.isAssignableFrom(TopupViewModel::class.java)) {
+            return TopupViewModel(transactionRepository) as T
         } else if (modelClass.isAssignableFrom(TransferViewModel::class.java)) {
             return TransferViewModel(transactionRepository) as T
         }

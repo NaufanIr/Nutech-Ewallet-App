@@ -8,23 +8,26 @@ import retrofit2.http.*
 interface ApiService {
     //USER DOMAIN
     @GET("getProfile")
-    suspend fun getProfile(@Header("Authorization") token: String): Response<User?>
+    suspend fun getProfile(@Header("Authorization") token: String): retrofit2.Response<Response<User?>>
 
-    @POST("registration")
+    @GET("balance")
+    suspend fun getBalance(@Header("Authorization") token: String): retrofit2.Response<Response<User?>>
+
     @FormUrlEncoded
+    @POST("registration")
     suspend fun registration(
+        @Field("first_name") firstName: String,
+        @Field("last_name") lastName: String,
         @Field("email") username: String,
         @Field("password") password: String,
-        @Field("first_name") firstName: String,
-        @Field("last_name") lastName: String
-    ): Response<User?>
+    ): retrofit2.Response<Response<User?>>
 
-    @POST("login")
     @FormUrlEncoded
+    @POST("login")
     suspend fun login(
-        @Field("email") username: String,
-        @Field("password") password: String
-    ): Response<User?>
+        @Field("email") username: String, @Field("password") password: String
+    ): retrofit2.Response<Response<User?>>
+
 
     @FormUrlEncoded
     @POST("updateProfile")
@@ -32,26 +35,24 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Field("first_name") firstName: String,
         @Field("last_name") lastName: String
-    ): Response<User?>
+    ): retrofit2.Response<Response<User?>>
+
 
     //TRANSACTION DOMAIN
-    @GET("balance")
-    suspend fun getBalance(@Header("Authorization") token: String): Response<Transaction?>
-
     @GET("transactionHistory")
-    suspend fun getTransactionHistory(@Header("Authorization") token: String): Response<Transaction?>
+    suspend fun getTransactionHistory(@Header("Authorization") token: String): retrofit2.Response<Response<List<Transaction?>>>
 
     @FormUrlEncoded
     @POST("transfer")
     suspend fun transfer(
         @Header("Authorization") token: String,
         @Field("amount") amount: Int,
-    ): Response<String?>
+    ): retrofit2.Response<Response<String?>>
 
     @FormUrlEncoded
     @POST("topup")
     suspend fun topUp(
         @Header("Authorization") token: String,
         @Field("amount") amount: Int,
-    ): Response<String?>
+    ): retrofit2.Response<Response<String?>>
 }

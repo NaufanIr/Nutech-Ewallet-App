@@ -13,8 +13,5 @@ data class Transaction(
     val transactionType: String?,
 
     @field:SerializedName("amount")
-    val amount: Int?,
-
-    @field:SerializedName("balance")
-    val balance: Int?,
+    val amount: Int?
 )

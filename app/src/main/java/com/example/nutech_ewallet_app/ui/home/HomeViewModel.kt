@@ -1,9 +1,6 @@
 package com.example.nutech_ewallet_app.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.example.nutech_ewallet_app.data.repository.TransactionRepository
 import com.example.nutech_ewallet_app.data.repository.UserRepository
 
@@ -14,7 +11,9 @@ class HomeViewModel(
 
     private val token = userRepo.token
 
-    val userName = Transformations.switchMap(token) { userRepo.getUserProfile(it) }
+    val userName = Transformations.switchMap(token) { token ->
+            userRepo.getUserProfile(token)
+    }
 
     val saldoBalance = Transformations.switchMap(token) { transactionRepo.getBalance(it) }
 

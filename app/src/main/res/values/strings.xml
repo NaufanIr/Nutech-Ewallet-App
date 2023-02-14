@@ -2,6 +2,22 @@
     <string name="app_name">Nutech-Ewallet-App</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_transfer">Transfer</string>
     <string name="title_profile">Profile</string>
+    <string name="title_transaction">Transaction</string>
+    <string name="login">Login</string>
+    <string name="registration">Registration</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login_subtitle">Please log in with account that has been registered.</string>
+    <string name="last_name">Last name</string>
+    <string name="first_name">First name</string>
+    <string name="register_now">Register Now!</string>
+    <string name="register">Register</string>
+    <string name="your_balance">Your Balance</string>
+    <string name="top_up">Top Up</string>
+    <string name="transfer">Transfer</string>
+    <string name="enter_transfer_amount">Enter Transfer Amount</string>
+    <string name="enter_topup_amount">Enter Top Up Amount</string>
+    <string name="rp">Rp</string>
+    <string name="btn_transfer">Transfer</string>
 </resources>

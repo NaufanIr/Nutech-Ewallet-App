@@ -12,14 +12,15 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_transfer"
-        android:name="com.example.nutech_ewallet_app.ui.transfer.TransferFragment"
-        android:label="@string/title_transfer"
-        tools:layout="@layout/fragment_transfer" />
+        android:id="@+id/navigation_transaction"
+        android:name="com.example.nutech_ewallet_app.ui.transaction.TransactionFragment"
+        android:label="@string/title_transaction"
+        tools:layout="@layout/fragment_transaction" />
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.nutech_ewallet_app.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+
 </navigation>

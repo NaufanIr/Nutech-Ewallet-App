@@ -18,13 +18,7 @@ class ProfileViewModel(private val userRepo: UserRepository) : ViewModel() {
         }
     }
 
-    val firstName =
-        Transformations.switchMap(token) { userRepo.getUserProfile(it) }.value?.data?.firstName
-
-    val lastName =
-        Transformations.switchMap(token) { userRepo.getUserProfile(it) }.value?.data?.lastName
-
-    val email = Transformations.switchMap(token) { userRepo.getUserProfile(it) }.value?.data?.email
+    val user = Transformations.switchMap(token) { userRepo.getUserProfile(it) }
 
     fun updateUserProfile(firstName: String, lastName: String) = Transformations.switchMap(token) {
         userRepo.updateUserProfile(it, firstName, lastName)

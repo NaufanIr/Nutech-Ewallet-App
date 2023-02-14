@@ -4,6 +4,8 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import com.example.nutech_ewallet_app.data.SystemPreferences
 import com.example.nutech_ewallet_app.data.api.ApiService
+import com.example.nutech_ewallet_app.data.entity.Response
+import org.json.JSONObject
 
 class TransactionRepository private constructor(
     private val apiService: ApiService,
@@ -18,19 +20,43 @@ class TransactionRepository private constructor(
 
     //TRANSACTION DATA FROM API
     fun getBalance(token: String) = liveData {
-        emit(apiService.getBalance(token))
+        val response = apiService.getBalance(token)
+        if (response.isSuccessful) {
+            emit(response.body())
+        } else {
+            val error = JSONObject(response.errorBody()!!.charStream().readText())
+            emit(Response(error.getInt("status"), error.getString("message"), null))
+        }
     }
 
     fun getHistoryTransaction(token: String) = liveData {
-        emit(apiService.getTransactionHistory(token))
+        val response = apiService.getTransactionHistory(token)
+        if (response.isSuccessful) {
+            emit(response.body())
+        } else {
+            val error = JSONObject(response.errorBody()!!.charStream().readText())
+            emit(Response(error.getInt("status"), error.getString("message"), null))
+        }
     }
 
     fun topup(token: String, amount: Int) = liveData {
-        emit(apiService.topUp(token, amount))
+        val response = apiService.topUp(token, amount)
+        if (response.isSuccessful) {
+            emit(response.body())
+        } else {
+            val error = JSONObject(response.errorBody()!!.charStream().readText())
+            emit(Response(error.getInt("status"), error.getString("message"), null))
+        }
     }
 
     fun transfer(token: String, amount: Int) = liveData {
-        emit(apiService.transfer(token, amount))
+        val response = apiService.transfer(token, amount)
+        if (response.isSuccessful) {
+            emit(response.body())
+        } else {
+            val error = JSONObject(response.errorBody()!!.charStream().readText())
+            emit(Response(error.getInt("status"), error.getString("message"), null))
+        }
     }
 
     companion object {
